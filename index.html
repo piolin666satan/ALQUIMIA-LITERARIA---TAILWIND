@@ -5,8 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Alquimia.Literaria - Inicio</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- copiar tipografia con el script de tailwind tambien-->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
   <!-- copiar paleta de colores-->
   <style>
@@ -28,8 +30,8 @@
   </a>
   <nav class="hidden md:flex">
     <a href="#" class="text-lg mx-4 text-[var(--color-secundario)] border-b-2 border-[var(--color-secundario)]">Inicio</a>
-    <a href="#libreria" class="text-lg mx-4 hover:text-[var(--color-secundario)] hover:border-b-2 border-[var(--color-secundario)] transition-all">Librería</a>
-    <a href="#prestamos" class="text-lg mx-4 hover:text-[var(--color-secundario)] hover:border-b-2 border-[var(--color-secundario)] transition-all">Préstamos</a>
+    <a href="views/libreria/libreria.html" class="text-lg mx-4 hover:text-[var(--color-secundario)] hover:border-b-2 border-[var(--color-secundario)] transition-all">Librería</a>
+    <a href="views/prestamos/prestamos.html" class="text-lg mx-4 hover:text-[var(--color-secundario)] hover:border-b-2 border-[var(--color-secundario)] transition-all">Préstamos</a>
   </nav>
   <div class="hidden md:flex items-center space-x-1">
     <input type="search" placeholder="Buscar..." class="px-5 py-1 rounded-l-md border border-r-0 border-[var(--color-secundario)] focus:outline-none focus:ring-2 focus:ring-[var(--color-secundario)]" />
@@ -122,7 +124,7 @@
   </p>
   <div class="flex flex-col justify-center gap-4 sm:flex-row">
     <a href="#libreria" class="inline-flex items-center justify-center gap-2 bg-[var(--color-secundario)] text-[var(--color-primario)] font-bold py-3 px-6 rounded-full text-lg shadow hover:shadow-lg hover:bg-[var(--color-gris)] transition-transform transform hover:scale-105">
-      📚 Ver Librería
+      <i class="fas fa-book mr-2"></i>Ver Librería
     </a>
     <a href="#registro" class="inline-flex items-center justify-center gap-2 bg-white text-[var(--color-primario)] font-bold py-3 px-6 rounded-full text-lg shadow hover:shadow-lg hover:bg-gray-100 transition-transform transform hover:scale-105">
       ✍️ Crear cuenta
@@ -166,16 +168,23 @@
     <div
       class="md:hidden fixed bottom-0 left-0 w-full bg-[var(--color-primario)] border-t-2 border-[var(--color-dos)] flex justify-around py-2 z-50 shadow-lg"
     >
-      <a href="Uniforme_tailwin.html" class="flex flex-col items-center text-[var(--color-dos)] text-sm font-semibold hover:text-white transition">
-        <i class="text-lg fa-solid fa-house"></i> Inicio
+      <a href="#" class="flex flex-col items-center text-white text-sm font-semibold">
+        <i class="fas fa-home text-lg"></i> Inicio
       </a>
-      <a href="catalogo.html" class="flex flex-col items-center text-[var(--color-dos)] text-sm font-semibold hover:text-white transition">
-        <i class="text-lg fa-solid fa-envelope"></i> Librería
+      <a href="views/libreria/libreria.html" class="flex flex-col items-center text-[var(--color-dos)] text-sm font-semibold hover:text-white transition">
+        <i class="fas fa-book text-lg"></i> Librería
       </a>
-            <a href="donar.html" class="flex flex-col items-center text-[var(--color-dos)] text-sm font-semibold hover:text-white transition">
-        <i class="text-lg fa-solid fa-envelope"></i> Prestamos
+      <a href="views/prestamos/prestamos.html" class="flex flex-col items-center text-[var(--color-dos)] text-sm font-semibold hover:text-white transition">
+        <i class="fas fa-clipboard-list text-lg"></i> Préstamos
       </a>
     </div>
 
+<script src="models/usuario.js"></script>
+<script src="service/usuarioService.js"></script>
+<script src="service/utilidadesService.js"></script>
+<script src="service/alertasService.js"></script>
+<script src="service/headerService.js"></script>
+<script src="service/menuInferiorService.js"></script>
+<script src="controllers/principalController.js"></script>
 </body>
 </html>

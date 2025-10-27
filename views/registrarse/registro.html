@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Alquimia.Literaria - Registro</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <style>
       body {
         font-family: "Poppins", sans-serif;
@@ -31,20 +33,24 @@
       class="fixed top-0 left-0 w-full px-6 py-4 bg-[var(--color-primario)] flex justify-between items-center shadow-md z-50"
     >
       <a
+        href="../../index.html"
         class="text-2xl font-extrabold text-[var(--color-secundario)] hover:scale-110 transition-transform"
       >
         Alquimia.Literaria
       </a>
 
-      </nav>
-      <div class="hidden md:flex space-x-2">
+      <nav class="flex items-center space-x-4">
+        <a href="../../index.html" 
+           class="text-lg text-[var(--color-secundario)] hover:border-b-2 border-[var(--color-secundario)] transition-all px-2 py-1">
+            <i class="fas fa-home mr-1"></i>Inicio
+        </a>
         <a
           href="../iniciar sesion/login.html"
           class="bg-white text-[var(--color-primario)] px-3 py-1 rounded-lg font-semibold hover:bg-gray-100"
         >
           Iniciar sesión
         </a>
-      </div>
+      </nav>
     </header>
 
     <!-- FORMULARIO DE REGISTRO -->
@@ -78,7 +84,6 @@
               id="nombres"
               name="nombres"
               placeholder="Tu nombre"
-              required
               class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-gris)]"
             />
           </div>
@@ -94,7 +99,6 @@
               id="apellidos"
               name="apellidos"
               placeholder="Tus apellidos"
-              required
               class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-gris)]"
             />
           </div>
@@ -110,7 +114,6 @@
               id="telefono"
               name="telefono"
               placeholder="+57 300 000 0000"
-              required
               class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-gris)]"
             />
           </div>
@@ -126,7 +129,6 @@
               id="email"
               name="email"
               placeholder="ejemplo@correo.com"
-              required
               class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-gris)]"
             />
           </div>
@@ -142,7 +144,21 @@
               id="ciudad"
               name="ciudad"
               placeholder="Tu ciudad"
-              required
+              class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-gris)]"
+            />
+          </div>
+
+          <div>
+            <label
+              for="password"
+              class="block text-sm font-medium text-[var(--color-primario)]"
+              >Contraseña</label
+            >
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="••••••••"
               class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-gris)]"
             />
           </div>
@@ -155,14 +171,25 @@
           </button>
         </form>
 
-        <p class="text-center text-gray-600 text-sm mt-6">
-          ¿Ya tienes una cuenta?
-          <a
-            href="../iniciar sesion/login.html"
-            class="text-[var(--color-primario)] font-semibold hover:underline"
-            >Inicia sesión aquí</a
-          >
-        </p>
+        <div class="mt-6 space-y-3">
+            <p class="text-center text-gray-600 text-sm">
+              ¿Ya tienes una cuenta?
+              <a
+                href="../iniciar sesion/login.html"
+                class="text-[var(--color-primario)] font-semibold hover:underline"
+                >Inicia sesión aquí</a
+              >
+            </p>
+            
+            <div class="text-center border-t pt-3">
+                <a
+                href="../../index.html"
+                class="inline-flex items-center text-gray-600 hover:text-[var(--color-primario)] transition-colors font-medium text-sm"
+                >
+                    <i class="fas fa-home mr-1"></i>Volver al inicio
+                </a>
+            </div>
+        </div>
       </div>
     </main>
 
@@ -244,5 +271,10 @@
         <i class="text-lg fa-solid fa-hand-holding-heart"></i> Préstamos
       </a>
     </div>
+    
+    <script src="../../models/usuario.js"></script>
+    <script src="../../service/usuarioService.js"></script>
+    <script src="../../service/alertasService.js"></script>
+    <script src="../../controllers/registroController.js"></script>
   </body>
 </html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Alquimia.Literaria - Mis Préstamos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        body {
+            font-family: "Poppins", sans-serif;
+        }
+        :root {
+            --color-primario: #34495e;
+            --color-secundario: #e5d7b9;
+            --color-fondo: #34495e;
+            --color-gris: #c9a646;
+        }
+        .contenido-protegido {
+            display: none;
+        }
+        .contenido-protegido.mostrar {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 pb-20">
+
+<header class="fixed top-0 left-0 w-full px-6 py-4 bg-[var(--color-primario)] flex justify-between items-center shadow-md z-50">
+    <a href="../../index.html" class="text-2xl font-extrabold text-[var(--color-secundario)] hover:scale-110 transition-transform">
+        Alquimia.Literaria
+    </a>
+    <nav class="hidden md:flex">
+        <a href="../../index.html" class="text-lg mx-4 text-[var(--color-secundario)] hover:border-b-2 border-[var(--color-secundario)] transition-all">Inicio</a>
+        <a href="../libreria/libreria.html" class="text-lg mx-4 text-[var(--color-secundario)] hover:border-b-2 border-[var(--color-secundario)] transition-all">Librería</a>
+        <a href="#" class="text-lg mx-4 text-[var(--color-secundario)] border-b-2 border-[var(--color-secundario)]">Préstamos</a>
+    </nav>
+    <div class="hidden md:flex items-center space-x-2">
+        <!-- Contenido dinámico del header -->
+    </div>
+</header>
+
+<main class="pt-24 px-4">
+    <div class="max-w-6xl mx-auto contenido-protegido">
+        <h1 class="text-3xl font-bold text-[var(--color-primario)] mb-6">Mis Préstamos</h1>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="flex items-center">
+                    <div class="bg-blue-100 rounded-full p-3 mr-4">
+                        <i class="fas fa-book text-2xl"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-600">Préstamos Activos</p>
+                        <p id="contador-activos" class="text-2xl font-bold text-blue-600">0</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="flex items-center">
+                    <div class="bg-red-100 rounded-full p-3 mr-4">
+                        <span class="text-2xl">⏰</span>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-600">Próximos a Vencer</p>
+                        <p id="contador-proximos" class="text-2xl font-bold text-red-600">0</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="flex items-center">
+                    <div class="bg-green-100 rounded-full p-3 mr-4">
+                        <span class="text-2xl">✅</span>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-600">Total Devueltos</p>
+                        <p id="contador-devueltos" class="text-2xl font-bold text-green-600">0</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow-md mb-6">
+            <div class="border-b border-gray-200">
+                <nav class="flex space-x-8 px-6">
+                    <button id="tab-activos" class="py-4 border-b-2 border-[var(--color-primario)] text-[var(--color-primario)] font-medium">
+                        Préstamos Activos
+                    </button>
+                    <button id="tab-historial" class="py-4 border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300">
+                        Historial
+                    </button>
+                </nav>
+            </div>
+            
+            <div class="p-6">
+                <div id="contenido-activos">
+                    <div id="lista-prestamos-activos"></div>
+                    <div id="mensaje-sin-activos" class="text-center py-8 hidden">
+                        <p class="text-gray-500">No tienes préstamos activos</p>
+                        <a href="../libreria/libreria.html" class="text-[var(--color-primario)] hover:underline">
+                            Explorar librería
+                        </a>
+                    </div>
+                </div>
+                
+                <div id="contenido-historial" class="hidden">
+                    <div id="lista-historial"></div>
+                    <div id="mensaje-sin-historial" class="text-center py-8 hidden">
+                        <p class="text-gray-500">No tienes historial de préstamos</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+
+<div class="md:hidden fixed bottom-0 left-0 w-full bg-[var(--color-primario)] border-t-2 border-[var(--color-secundario)] flex justify-around py-2 z-50 shadow-lg">
+    <a href="../../index.html" class="flex flex-col items-center text-[var(--color-secundario)] text-sm font-semibold hover:text-white transition">
+        <i class="fas fa-home text-lg"></i> Inicio
+    </a>
+    <a href="../libreria/libreria.html" class="flex flex-col items-center text-[var(--color-secundario)] text-sm font-semibold hover:text-white transition">
+        <i class="fas fa-book text-lg"></i> Librería
+    </a>
+    <a href="#" class="flex flex-col items-center text-white text-sm font-semibold">
+        <i class="fas fa-clipboard-list text-lg"></i> Préstamos
+    </a>
+</div>
+
+<script src="../../models/usuario.js"></script>
+<script src="../../models/libro.js"></script>
+<script src="../../models/prestamo.js"></script>
+<script src="../../service/usuarioService.js"></script>
+<script src="../../service/librosService.js"></script>
+<script src="../../service/prestamosService.js"></script>
+<script src="../../service/alertasService.js"></script>
+<script src="../../service/headerService.js"></script>
+<script src="../../service/menuInferiorService.js"></script>
+<script src="../../service/proteccionService.js"></script>
+<script src="../../controllers/prestamosController.js"></script>
+</body>
+</html>
